@@ -2,10 +2,76 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Backbone from 'backbone'
 import init from './init'
+import HomeView from './views/homeView'
+import FavesView from './views/favesView'
+import {CutieCollection} from './models/dataModels'
+
 
 
 const app = function() {
-  document.querySelector('.container').innerHTML = "<h1>Woah!</h1>"
+	const FavesRouter = Backbone.Router.extend({
+		routes: {
+			"home": "handleHome",
+			"faves": "handleFaves",
+			"testing": "doTest",
+			"*default": "redirect"
+		},
+
+		doTest: function() {
+			console.log('doing api test')
+			// this route was just used for a teaching example in class. not part of the app.
+			// the following two patterns are functionally the same
+			var c = new CutieCollection()
+			c.fetch().then(function(){console.log(c)})
+
+			var promise = c.fetch()
+			promise.then(function(){console.log(c)})
+		},
+
+		handleHome: function() {
+			console.log('handling home')
+			ReactDOM.render( <HomeView />, document.querySelector('.container'))				
+		},
+
+		handleFaves: function() {
+			console.log('handling faves')
+			ReactDOM.render( <FavesView />, document.querySelector('.container'))
+		},
+
+		redirect: function() {
+			location.hash = "home"
+		},
+
+		initialize: function() {
+			Backbone.history.start()
+		}
+	})
+
+	new FavesRouter()
+
+  // 1. set up MVC
+  // * create a view for the homepage
+  // * set up a router
+  // * read api docs & set up models to manage data
+
+  // 2. set up flux
+
+  // * create actions module
+  // * create store (pub)
+  // * tell view to become a (sub)
+
+  // 3. create backend for faves
+  // * set up schema for a fave
+  // * set up api routes
+  // * test with postman
+
+  // 4. integrate front-end with backend
+  // * create actions to store faves (model.save / POST)
+  // * create actions to fetch faves (coll.fetch / GET)
+
+  // 5. styling
+  // * use a css framework
+
 }
 
 // x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..
