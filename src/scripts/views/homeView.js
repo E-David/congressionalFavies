@@ -14,7 +14,7 @@ const HomeView = React.createClass({
 		ACTIONS.fetchCuties()
 		STORE.on('storeChanged', ()=>{
 			this.setState(
-				STORE._getData
+				STORE._getData()
 			)
 		})
 	},
@@ -53,11 +53,25 @@ const List = React.createClass({
 })
 
 const Cutie = React.createClass({
+	_addFave: function() {
+		ACTIONS.addFave(this.props.model)
+	},
+
 	render: function() {
-		var { model } = this.props
+		var model = this.props.model,
+			fullName = model.get('first_name') + " " + model.get('last_name')
 		return (
 			<li>
-				<h3>{model.get('first_name') + " " + model.get('last_name')}</h3>
+				<h3>{fullName}</h3>
+				<div className="profile">
+					<img src={`https://robohash.org/${fullName}?set=set2`} />
+					<div className="bio-deets">
+						<p>title: {model.get('title')} </p>
+						<p>state: {model.get('state_name')} </p>
+						<p>party: {model.get('party')} </p>
+					</div>
+					<button onClick={this._addFave} >fave!</button>
+				</div>
 			</li>
 		)
 	}

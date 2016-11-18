@@ -1,10 +1,76 @@
+$primary: #ff00ff;
+$secondary: #74FF00;
+$tertiary: #FFE800;
 * {
 	font-family: Helvetica, Arial, sans-serif;
 	box-sizing: border-box;
 }
 
+body {
+	background: lighten($tertiary,30)
+}
+
 h1 {
-	font-size: 300px;
+	font-size: 96px;
+	margin: 1.5rem auto;
 	text-align: center;
 	color: fuchsia;
+	font-weight: normal;
+}
+
+nav {
+	max-width: 80%;
+	margin: 0 auto;
+	text-align: center;
+
+	a {
+		text-decoration: none;
+		margin: 0 1rem;
+		padding: .35rem .7rem;
+		cursor: pointer;
+		border-radius: 5%;
+		background: fuchsia;
+		color: #222;
+		box-shadow: 2.5px 2.5px darken($primary,20);
+	}
+}
+
+.list-view {
+	max-width: 60%;
+	margin: 1rem auto;
+
+	li {
+		box-shadow: 5px 5px darken($secondary,10);
+		background: lighten($secondary,10);
+		list-style: none;
+		padding: 2rem;
+		margin: 2rem;
+		h3 {
+		}
+		.profile {
+			.bio-deets {
+				display: inline-block;
+				vertical-align: top;
+				margin-left: 3rem;
+			}
+			img {
+				display: inline-block;
+				background: lighten($primary,25);
+				border-radius: 50%;
+				width: 150px;
+			}
+			button {
+				cursor: pointer;
+				outline: none;
+				border: none;
+				background: $primary;
+				box-shadow: 3px 3px darken($secondary,10);
+				padding: 1rem 2rem;
+				font-size: 24px;
+				font-weight: bolder;
+				vertical-align: top;
+				margin-left: .5rem;
+			}
+		}
+	}
 }

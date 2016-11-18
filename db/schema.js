@@ -39,5 +39,6 @@ const faveSchema = new mongoose.Schema({
 })
 
 module.exports = {
-  User: mongoose.model('User', usersSchema)
+  User: mongoose.model('User', usersSchema),
+  Fave: mongoose.model('Fave', faveSchema)
 }
