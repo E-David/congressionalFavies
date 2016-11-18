@@ -1,13 +1,13 @@
 import Backbone from 'backbone'
 import _ from 'underscore'
-import {CutieCollection} from './models/dataModels'
+import {CutieCollection, FaveCollection} from './models/dataModels'
 
 const STORE = _.extend(Backbone.Events, {
 
 	_data: {
 		cutieCollection: new CutieCollection(),
+		faveCollection: new FaveCollection()
 	},
-
 
 	_emitChange: function() {
 		this.trigger('storeChanged')
@@ -25,7 +25,10 @@ const STORE = _.extend(Backbone.Events, {
 		// usage: STORE._set({
 		// 	key: val
 		// })
+		// change the contents of store's data
 		this._data = _.extend(this._data,changeObj)
+
+		// broadcast an announcement to signal that change
 		this._emitChange()
 	}
 })

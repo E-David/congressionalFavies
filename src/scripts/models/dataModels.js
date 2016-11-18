@@ -1,9 +1,14 @@
 import Backbone from 'backbone'
 
 export const FaveModel = Backbone.Model.extend({
-	urlRoot: '/api/faves'
+	urlRoot: '/api/faves',
+	idAttribute: '_id'
 })
 
+export const FaveCollection = Backbone.Collection.extend({
+	url: '/api/faves',
+	model: FaveModel
+})
 
 export const CutieCollection = Backbone.Collection.extend({
 	url: 'https://congress.api.sunlightfoundation.com/legislators',

@@ -1,5 +1,5 @@
 import STORE from './store'
-import {CutieCollection,FaveModel} from "./models/dataModels"
+import {CutieCollection,FaveCollection,FaveModel} from "./models/dataModels"
 
 const ACTIONS = {
 
@@ -13,6 +13,13 @@ const ACTIONS = {
 		faveMod.save()
 			.done(()=>alert(cutieMod.get('first_name') + ' successfully saved!'))
 			.fail(()=>alert(cutieMod.get('first_name') + ' failed to save :('))
+	},
+
+	deleteFave: function(model) {
+		model.destroy()
+			.done(()=>alert(model.get('first_name') + 'successfully deleted!'))
+			.fail(()=>alert(model.get('first_name') + 'failed to delete :('))
+		STORE._emitChange()
 	},
 
 	fetchCuties: function() {
@@ -31,7 +38,25 @@ const ACTIONS = {
 				cutieCollection: c
 			})
 		})
-		
+	},
+
+	fetchFaves: function() {
+
+		var f = new FaveCollection()
+		// we need to tell this collection to fetch data
+		f.fetch().then(
+			function(){
+				STORE._set({
+					faveCollection: f
+				})
+			},
+			function(err) {
+				alert('problem retrieving fave data')
+				console.log(err)
+			}
+		)
+		// once the data is loaded, we will set a new faveCollection property on our store,
+		// which will trigger a full reflow of the view
 	}
 }
 

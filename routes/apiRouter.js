@@ -75,5 +75,19 @@ apiRouter
       })
     })
 
+    // Delete one
+    .delete('/faves/:_id', function(req,res) {
+      Fave.remove({_id: req.params._id}, function(err) {
+        if (err) {
+          res.status(500).json(err)
+        }
+        else {
+          res.json({
+            status: 'record with id' + req.params._id + 'successfully deleted!'
+          })
+        }
+      })
+    })
+
 
 module.exports = apiRouter

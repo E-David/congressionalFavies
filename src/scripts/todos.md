@@ -8,6 +8,7 @@
   // * create actions module
   // * create store (pub)
   // * tell view to become a (sub)
+  
 VIEW (listening for broadcasts) --> ACTIONS --> STORE (((broadcast)))
 
   // 3. create backend for faves
