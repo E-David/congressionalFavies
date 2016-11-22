@@ -4,9 +4,10 @@ import Backbone from 'backbone'
 import init from './init'
 import HomeView from './views/homeView'
 import FavesView from './views/favesView'
+import LoginView from './views/loginView'
 import {CutieCollection} from './models/dataModels'
-
-
+import User from './models/userModel'
+import ACTIONS from './actions'
 
 const app = function() {
 	const FavesRouter = Backbone.Router.extend({
@@ -14,6 +15,8 @@ const app = function() {
 			"home": "handleHome",
 			"faves": "handleFaves",
 			"testing": "doTest",
+			"login": "handleLogin",
+			"logout": "handleLogout",
 			"*default": "redirect"
 		},
 
@@ -38,12 +41,23 @@ const app = function() {
 			ReactDOM.render( <FavesView />, document.querySelector('.container'))
 		},
 
+		handleLogin: function() {
+			ReactDOM.render( <LoginView />, document.querySelector('.container'))
+		},
+
+		handleLogout: function() {
+			ACTIONS.logout()
+		},
+
 		redirect: function() {
 			location.hash = "home"
 		},
 
 		initialize: function() {
 			Backbone.history.start()
+			if (!User.getCurrentUser()) {
+				location.hash = 'login'
+			}
 		}
 	})
 

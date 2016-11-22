@@ -8,6 +8,7 @@ const Header = React.createClass({
 				<nav>
 					<a href="#home">home</a>
 					<a href="#faves">faves</a>
+					<a href="#logout">logout</a>
 				{/*<a href={location.hash === "#home" ? "#faves" : "#home"}>{location.hash === "#home" ? 'faves' : 'home'}</a>*/}
 				</nav>
 			</header>

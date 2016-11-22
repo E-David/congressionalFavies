@@ -9,6 +9,7 @@ const UserAuthModel = Backbone.Model.extend({
 })
 
 UserAuthModel.register = function(newUserData) {
+	// newUserData must have an email and a password property. 
 	if(typeof newUserData !== 'object') {  throw new Error("User.register needs to be of type object with email & password properties") }
 	if(!newUserData.email || !newUserData.password) {  throw new Error("object needs email + password properties") }
 
@@ -69,4 +70,4 @@ const User = UserAuthModel.extend({
 
 
 
-export { User }
+export default User

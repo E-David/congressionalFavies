@@ -63,8 +63,6 @@ apiRouter
 
     // Read many
     .get('/faves', function(req,res) {
-      console.log('got a fave request')
-      console.log('here comes request',req.query, req.body)
       Fave.find(req.query,function(err,records) {
         if (err) {
           res.status(500).send(err)

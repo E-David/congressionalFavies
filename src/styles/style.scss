@@ -74,3 +74,26 @@ nav {
 		}
 	}
 }
+
+.login-view {
+	form {
+		width: 60%;
+		margin: 3rem auto;
+		border: 5px solid $primary;
+		text-align: center;
+
+		h3 {
+			font-size: 36px;
+			margin-top: .5rem;
+			color: #222;
+		}
+
+		input {
+			width: 80%;
+			padding: 1rem 2rem;
+			font-size: 22px;
+			display: block;	
+			margin: 1rem auto;
+		}
+	}
+}

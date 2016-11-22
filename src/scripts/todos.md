@@ -8,7 +8,7 @@
   // * create actions module
   // * create store (pub)
   // * tell view to become a (sub)
-  
+
 VIEW (listening for broadcasts) --> ACTIONS --> STORE (((broadcast)))
 
   // 3. create backend for faves
@@ -22,3 +22,15 @@ VIEW (listening for broadcasts) --> ACTIONS --> STORE (((broadcast)))
 
   // 5. styling
   // * use a css framework
+
+  // 6. integrate user functionality x
+  // * create a login screen to register & login users x
+  // * create a button/link to log a user out x
+  // * modify schema for faves to include a user ID x
+  // * save with a user ID when i save a new fave x
+  // * fetch according to the current user's ID when fetching faves 
+        // we will use a query string on the end of the url
+        // like so: ?user_id=[MY ID HERE]
+        // which on the server becomes req.query, which looks like {
+            user_id: [USER ID HERE]
+        }

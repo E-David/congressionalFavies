@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './header'
 import STORE from '../store'
 import ACTIONS from '../actions'
-
+import User from '../models/userModel'
 
 
 // how will we give these view components access to the cutie models?
@@ -45,6 +45,7 @@ const List = React.createClass({
 	 	var col = this.props.collection
 	 	return (
 	 		<ul className='list-view' >
+	 			<h2>All of {User.getCurrentUser().email}'s faves!</h2>
 	 			{col.map(cutieModel=> <Cutie model={cutieModel} />)}
 	 		</ul>
 	 	)

@@ -18,6 +18,7 @@ const usersSchema = new mongoose.Schema({
 
 // this is the schema for a favorite
 const faveSchema = new mongoose.Schema({
+	user_id: {type: String, required: true},
 	birthday: String,
 	chamber: String,
 	contact_form: String,
@@ -35,7 +36,7 @@ const faveSchema = new mongoose.Schema({
 	term_start: String,
 	title: String,
 	website: String,
-	createdAt: {type: Date, default: Date.now}
+	created_at: {type: Date, default: Date.now}
 })
 
 module.exports = {
